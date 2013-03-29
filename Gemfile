@@ -1,3 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
-gem 'test-kitchen'
+gem 'test-kitchen', '>= 1.0.0'
+gem 'kitchen-vagrant', :group => :integration

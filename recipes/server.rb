@@ -57,11 +57,6 @@ template "/etc/init.d/sauceproxy" do
   action :create
 end
 
-service "sauceproxy" do
-  action :enable
-  supports :restart => true
-end
-
 template "/etc/sysconfig/sauceproxy" do
   source "sauceproxy.sysconfig.erb"
   mode 00644
@@ -71,5 +66,6 @@ template "/etc/sysconfig/sauceproxy" do
 end
 
 service "sauceproxy" do
-  action :start
+  supports :restart => true
+  action [:enable, :start]
 end
