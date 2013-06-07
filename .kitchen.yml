@@ -14,5 +14,5 @@ platforms:
 
 suites:
 - name: default
-  run_list: ["recipe[minitest-handler]", "recipe[sauceproxy]"]
+  run_list: ["recipe[minitest-handler]", "recipe[sauceproxy::server]"]
   attributes: {}
