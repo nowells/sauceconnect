@@ -3,6 +3,7 @@
 # Attributes:: default
 #
 # Copyright 2012-2013, SecondMarket Labs, LLC
+# Copyright 2013, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +19,7 @@
 #
 
 # You can choose 'latest' as version, but keep in mind that whenever Saucelabs does a new release, your proxy will restart!
-default['sauceproxy']['server']['version']='3.0-r22'
+default['sauceproxy']['server']['version']='3.0-r28'
 default['sauceproxy']['server']['download_url']='http://saucelabs.com/downloads'
 default['sauceproxy']['server']['zipfile']="Sauce-Connect-#{node['sauceproxy']['server']['version']}.zip"
 default['sauceproxy']['server']['install_dir']='/opt/sauceproxy'
