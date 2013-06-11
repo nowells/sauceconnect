@@ -7,3 +7,6 @@ rvm:
   - jruby-19mode # JRuby in 1.9 mode
   - rbx-19mode
 script: bundle exec rake test:syntax test:lint test:spec
+notifications:
+  email:
+    - jdunn@aquezada.com
