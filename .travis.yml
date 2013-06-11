@@ -1,13 +1,9 @@
 language: ruby
 gemfile:
   - gemfiles/travis.gemfile
-before_install: git clone --depth=50 --branch=master git://github.com/opscode-cookbooks/java.git juliandunn/java
 rvm:
   - "1.9.2"
   - "1.9.3"
-  - jruby-18mode # JRuby in 1.8 mode
   - jruby-19mode # JRuby in 1.9 mode
-  - rbx-18mode
   - rbx-19mode
-# uncomment this line if your project needs to run something other than `rake`:
-script: rspec
+script: bundle exec rake test:syntax test:lint test:spec
