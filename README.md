@@ -3,6 +3,8 @@ Description
 
 Installs SauceLabs' "Connect" proxy on a server. The proxy allows you to test internal infrastructure with SauceLabs' Selenium testing service by setting up a tunnel.
 
+[![Build Status](https://travis-ci.org/juliandunn/sauceproxy.png)](https://travis-ci.org/juliandunn/sauceproxy)
+
 Requirements
 ============
 
@@ -55,9 +57,10 @@ To-Do
 License and Author
 ==================
 
-Author:: Julian C. Dunn (<jdunn@secondmarket.com>)
+Author:: Julian C. Dunn (<jdunn@opscode.com>)
 
 Copyright:: 2012-2013, SecondMarket Labs, LLC.
+Copyright:: 2013, Opscode, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
