@@ -16,6 +16,14 @@ describe 'sauceproxy::server' do
     runner.converge('sauceproxy::server')
   end
 
+  it 'should install unzip to unpack the zipfile' do
+    expect(chef_run).to install_package('unzip')
+  end
+
+  it 'should create a user to run sauceproxy under' do
+    expect(chef_run).to create_user('fake')
+  end
+
   it 'should create a sauceproxy directory with the right ownership' do
     expect(chef_run).to create_directory('/tmp/fake')
     expect(chef_run.directory('/tmp/fake')).to be_owned_by('fake')
