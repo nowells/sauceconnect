@@ -8,8 +8,6 @@ describe 'sauceproxy::server' do
       platform: 'centos',
       version: '6.3'
     )
-    runner.node.set['sauceproxy'] = Hash.new
-    runner.node.set['sauceproxy']['server'] = Hash.new
     runner.node.set['sauceproxy']['server']['user'] = 'fake'
     runner.node.set['sauceproxy']['server']['install_dir'] = '/tmp/fake'
     runner.node.set['sauceproxy']['server']['version'] = '3.14159'
