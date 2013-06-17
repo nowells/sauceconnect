@@ -1,6 +1,6 @@
 name             "sauceproxy"
-maintainer       "SecondMarket Labs, LLC"
-maintainer_email "systems@secondmarket.com"
+maintainer       "Opscode, Inc"
+maintainer_email "jdunn@opscode.com"
 license          "Apache 2.0"
 description      "Installs/Configures SauceLabs Proxy"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
