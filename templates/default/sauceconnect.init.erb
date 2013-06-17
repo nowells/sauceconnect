@@ -1,13 +1,13 @@
 #!/bin/sh
 #
-# Startup / shutdown script for sauceproxy
+# Startup / shutdown script for sauceconnect
 #
 # Copyright (c) 2012, SecondMarket Labs, LLC
 # All rights reserved
 #
 #
 ### BEGIN INIT INFO
-# Provides:          sauceproxy
+# Provides:          sauceconnect
 # Required-Start:    $network $local_fs
 # Required-Stop:
 # Should-Start:      $named
@@ -29,10 +29,10 @@
 [ ${NETWORKING} = "no" ] && exit 0
 
 # Source config file if it exists
-[ -r /etc/sysconfig/sauceproxy ] && . /etc/sysconfig/sauceproxy
+[ -r /etc/sysconfig/sauceconnect ] && . /etc/sysconfig/sauceconnect
 
-jarfile=${JARFILE-<%= node['sauceproxy']['server']['install_dir'] %>/Sauce-Connect.jar}
-logfile=${LOGFILE-<%= node['sauceproxy']['server']['install_dir'] %>/sauce_connect.log}
+jarfile=${JARFILE-<%= node['sauceconnect']['server']['install_dir'] %>/Sauce-Connect.jar}
+logfile=${LOGFILE-<%= node['sauceconnect']['server']['install_dir'] %>/sauce_connect.log}
 sauceuser=${SAUCEUSER-root}
 apiuser=${APIUSER-bogus}
 apikey=${APIKEY-bogus}

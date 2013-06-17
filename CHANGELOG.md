@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of sauceproxy.
 
+## 0.1.9:
+
+* Added (some) tests. Upgrade to SauceConnect 3.0-r28
+
 ## 0.1.8:
 
 * SOP-2845 Upgrade to SauceConnect 3.0-r22 which solves the problem from the previous version

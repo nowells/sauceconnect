@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: sauceproxy
+# Cookbook Name:: sauceconnect
 # Recipe:: server
 #
 # Copyright 2012-2013, SecondMarket Labs, LLC
@@ -19,14 +19,14 @@
 
 include_recipe "java"
 
-user node['sauceproxy']['server']['user'] do
+user node['sauceconnect']['server']['user'] do
   comment "SauceLabs Proxy User"
   system true
   action :create
 end
 
-directory node['sauceproxy']['server']['install_dir'] do
-  owner node['sauceproxy']['server']['user']
+directory node['sauceconnect']['server']['install_dir'] do
+  owner node['sauceconnect']['server']['user']
   mode 00755
   action :create
 end
@@ -37,35 +37,35 @@ package "unzip" do
 end
 
 execute "unzip-saucelabs-proxy" do
-  cwd node['sauceproxy']['server']['install_dir']
-  command "unzip -o #{Chef::Config[:file_cache_path]}/#{node['sauceproxy']['server']['zipfile']}"
+  cwd node['sauceconnect']['server']['install_dir']
+  command "unzip -o #{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['zipfile']}"
   action :nothing
-  notifies :restart, "service[sauceproxy]"
+  notifies :restart, "service[sauceconnect]"
 end
 
-remote_file "#{Chef::Config[:file_cache_path]}/#{node['sauceproxy']['server']['zipfile']}" do
-  source "#{node['sauceproxy']['server']['download_url']}/#{node['sauceproxy']['server']['zipfile']}"
+remote_file "#{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['zipfile']}" do
+  source "#{node['sauceconnect']['server']['download_url']}/#{node['sauceconnect']['server']['zipfile']}"
   action :create_if_missing
   notifies :run, "execute[unzip-saucelabs-proxy]", :immediately
 end
 
-template "/etc/init.d/sauceproxy" do
-  source "sauceproxy.init.erb"
+template "/etc/init.d/sauceconnect" do
+  source "sauceconnect.init.erb"
   mode 00755
   owner "root"
   group "root"
   action :create
 end
 
-template "/etc/sysconfig/sauceproxy" do
-  source "sauceproxy.sysconfig.erb"
+template "/etc/sysconfig/sauceconnect" do
+  source "sauceconnect.sysconfig.erb"
   mode 00644
   owner "root"
   group "root"
   action :create
 end
 
-service "sauceproxy" do
+service "sauceconnect" do
   supports :restart => true
   action [:enable, :start]
 end
