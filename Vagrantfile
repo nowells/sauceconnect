@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  config.vm.hostname = "sauceproxy-berkshelf"
+  config.vm.hostname = "sauceconnect-berkshelf"
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "centos-6.4"
@@ -77,7 +77,7 @@ Vagrant.configure("2") do |config|
 
     chef.run_list = [
       "recipe[minitest-handler]",
-      "recipe[sauceproxy::server]"
+      "recipe[sauceconnect::server]"
     ]
   end
 end
