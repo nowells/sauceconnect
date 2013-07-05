@@ -14,8 +14,8 @@ Requirements
 
 ## Platforms
 
-* CentOS 5.8, 6.3
-* RedHat Enterprise Linux 5.8, 6.3
+* CentOS 5.x, 6.x
+* RedHat Enterprise Linux 5.x, 6.x
 * Fedora
 
 Attributes
@@ -53,14 +53,15 @@ To-Do
 
 * Add more tests.
 * Throw an exception if neither the API user or key are defined.
+* Support other platforms (Debian, Ubuntu, etc.)
 
 License and Author
 ==================
 
-Author:: Julian C. Dunn (<jdunn@opscode.com>)
+* Author:: Julian C. Dunn (<jdunn@opscode.com>)
 
-Copyright:: 2012-2013, SecondMarket Labs, LLC.
-Copyright:: 2013, Opscode, Inc.
+* Copyright:: 2012-2013, SecondMarket Labs, LLC.
+* Copyright:: 2013, Opscode, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
