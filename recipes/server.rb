@@ -45,7 +45,7 @@ end
 
 remote_file "#{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['zipfile']}" do
   source "#{node['sauceconnect']['server']['download_url']}/#{node['sauceconnect']['server']['zipfile']}"
-  action :create_if_missing
+  action :create
   notifies :run, "execute[unzip-saucelabs-proxy]", :immediately
 end
 
