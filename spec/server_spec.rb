@@ -6,7 +6,7 @@ describe 'sauceconnect::server' do
   let :chef_run do
     runner = ChefSpec::Runner.new(
       :platform => 'centos',
-      :version => '6.3'
+      :version => '6.4'
     )
     runner.node.set['sauceconnect']['server']['user'] = 'fake'
     runner.node.set['sauceconnect']['server']['install_dir'] = '/tmp/fake'
@@ -36,6 +36,11 @@ describe 'sauceconnect::server' do
 
   it 'should download a remote_file from Sauce Labs' do
     expect(chef_run).to create_remote_file(::File.join(Chef::Config[:file_cache_path], 'Sauce-Connect-3.14159.zip'))
+    expect(chef_run).to notify('execute[unzip-saucelabs-proxy]').to(:run).immediately
+  end
+
+  it 'should extract the payload' do
+    expect(chef_run).to run_execute('unzip-saucelabs-proxy')
   end
 
   it 'should start a service called sauceconnect' do
