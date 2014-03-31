@@ -1,10 +1,43 @@
 language: ruby
-gemfile:
-  - gemfiles/travis.gemfile
+bundler_args: --without kitchen_vagrant
 rvm:
-  - "1.9.3"
-  - "2.1"
-script: rake test:syntax test:lint test:spec
+- '2.1'
+before_install:
+- echo -n $DO_KEY_CHUNK_{0..30} >> ~/.ssh/id_do.base64
+- cat ~/.ssh/id_do.base64 | tr -d ' ' | base64 --decode > ~/.ssh/id_do.pem
+script:
+- bundle exec rake style
+- bundle exec rake spec
+- bundle exec kitchen test $KITCHEN_INSTANCE
+after_script:
+- bundle exec kitchen test $KITCHEN_INSTANCE
 notifications:
   email:
-    - jdunn@aquezada.com
+  - jdunn@aquezada.com
+env:
+  global:
+  - secure: VDanWUqwWpCjYDfE6RUxZLuTQFaJ4wLopcq0p5oDrxQ3ACGnhsMPV2ijGujxmkZSa5/pWul+m8KKZARwVBktUp6CqnzTw683WBwn5+XKTo/ksuK0kYUwWKfPNuAHglvYjrs0trdHXwzaxBtLAhp1105h2PajAe/QRjQwWDDAOD8=
+  - secure: DfNrqj4SNqJCk6uO7Z7i0GSlxLNdy5nKYU8T8l7Qj703jvRbk8/HalSeGLRPhg8WAUBwjcRJtjfCVE0TBlhcqKTXtQ2OGjJTRN8lqY2deM8P5/2qsbDN+ZFQLxydQ2ZzpB032r9nF4A//s2mIgGlpVUq8uYa1y4ztGzQCnju/7A=
+  - secure: ZyM8bk+XFGSX+UZXSoLHVMuPvkC8nB6ne28lY2pK+VUZJz3GRUgBF9SwU5sphaSYyOFTFYDMO4wdWP6mOSexaIMSxs9VQD2SVAJPicKHvyj2gg2ACg27ovFLmIrnnh45TRm4klRNfYJTcLu+gnJZCn+xbOinQLkNKfsyCzyo9AM=
+  - secure: CKmdsaUNaZpCceBNVTW+r1T+w/YHG4rq0N21FoCyjX9T73jbkbJw6jWCyc7osJ+06+bPdC2DCS2PrpVoj7GUCQxYem/kXvmfZa+0m0tNw71EmIpt3dT4le5BgDFObej2nj/wNctfpRsIS7Lrra/074dwvtIiN219EwmdoOHty2I=
+  - secure: fA2UHIH0hattZeJ/51nX4SBA9MmuLr7NWpzWz4Jk+eA+j/22LBRBzakpxfwfhyvl+4EvgFEcuyG06UiixK1Nl5gHkp3ln9fEGuJwnkBjgmThwO57UHmYfOofA+ScojekBnk4Hp/L6aPkJKiSfVERW4c5z7Cl5C02T/EzN/uTh/g=
+  - secure: JOEy3Ke54fz2DabgRqtNNuVPDzWjRVgHkPQUDpUZrNPIcU+MA0Os4/z/fP2pCG+sDHR8B+exAc06aR7lNm3QyZOucOxTWP/M6rmkbqcAwmtWOhcOWooQv83xBe+mBSM4qkBVZDuAPwUAlA4aaZPwpPu3+JqLrEo4FvfNAp3FEWA=
+  - secure: a1a0EKQt0Nf8YgfSvM5OFzRiuTYHhIF0MKnIW9WGJcvVKp4L72KyfoLgbAkNme+6G893MPcAxKI/LvmAX3K1GoMtNnirCBqxTSdk6oNej+R4ipfNmWDh7odjTuPb6R5D4axM1VGzhOSw2hdcLXPbF2tNXDSGnWbh9TvG16TRotY=
+  - secure: b+gEAlOH32DJzYjD68yW4Cfnn2WNXUy+kW79ZfIJrYVMS4fYIoPri9L2xxPt+bYHDjJXRi1KdpDJRaqO/5UuUmuOAsgXlsG5+wQafcQsmrnotP1eF4ZfHV2NTZldNftAoxpXoX8rtOjXQskwY50htvwwXkfuQGJttLmtl7QB544=
+  - secure: GHGKFDLsKLNsY9JDvOIAtj+qTYt650TtvTuCFdB4qdbvjiRk4ABI1lcyjjZjh74EOUYxnw39vFB7QR+xXvnikKgcZxTuNfiqZZY8wfYHuaVKnVHQqoT5eR+mpur3Diexd6oPakwQBVV3PsOxemPChwZJS860aR+mRuZ9bEP0+Wg=
+  - secure: AZdJOFEWacdz/9Kg97uMI4ED5ThwQVaGq+CiMoLaBI73arDsyRq2yA4re+ENCtZVs5jJHdKCtY2OowcS3OJ0Rcz15Bq3CdmBcU5oTjQMv+qpdefUmYTJXm5fC7POEYzkYo18/JY3t5jHJUl6hqZIAWfBaE5+FybfGqZmJYcFo2w=
+  - secure: W3S/44a7CcUzgf0upJ95vnO4yYdDkjtUtjCPsp4ihbwStvblECNLMRUf71+b/uYr8AqTjSIBm3vj1zU9ytrjwhERnE4ZFzdUWXqyQGusaT3Uil/wKS5svKB7F5Z+RaKas/b01IgPJZo4c+GEaBZcSJ1U9onwcG6t48AVKmGFlSA=
+  - secure: NnOvHM3nqGumBUeZeTMbygtCwQ0tl7xwUGumGjivVlg4E5uVTmD2p7Ozexut3EqQIt2U8j7F1YYzpE5VhCbuPa5EebLMvB+R/hLBZNgdXPWUnriG8qV7a8Lcq0qoGf0ttHJNMjxea1EVdIjcthz3fBHwRhFJL0sADx8djAWzYjI=
+  - secure: dR3LTbuCqHCVLameHsBQdtwWTlCPy4wq95UjUqv92WtWW4hQtLIuWuO2x18n7jEr7sOY7E6UrOfvDW0GWNW4GnLewv1mBP4qZnbAHDcbOq44DQCJSFe3kMHVw0B6W7np1Kadcmf1XG1wrnvjmZobeGsRUv4Mvr27tGBLTxkcHYg=
+  - secure: TkBwJD8ciU58JrNy9bjPvMABQDhXBw5JzHhAuPMP9/SDtt1uRBHFLcFiip+pz7a8LsTHSsbqMRbB9mHwEAl4tnpgsGrbJq8kJRilM1qi7CwQzw6MSLIaMQrxJm+XlpUHKyMtk8Z/wbFEmbhWJr690lsCmW/BMWlQT/UBcbgPlfU=
+  - secure: JXxPcOKiY1h/S21D84MoSu6c1gx3ZeLJmYkpeZ21XrzageG/CEKxFt1n0FkBHer0JXyYj095qJeaVbtrdy/a0KdIvzMjv87Cdp0sm7CKqylLJ9qLOeIRADJ/WbKxkBkt24Lju/wJRoBoqkmJFv/lkZX5ylv2E+Y/0yLOdr9NqKw=
+  - secure: MWaNJ66zQDK58TYJ79sKybFDzU0CpKa/kj1+GCto3cSLJx4XwoaLecyil7W5XG3gwU+37LcSAK3OR01yR1IuSfFEYMhKCbNGb/QhvQEztTEPjthy2AZEQg/9sJrsguo8rU+SdSIabVCpGhoECOhT+PrxVMW7RrwGiQ++iLUeF8g=
+  - secure: XSRQl8mN1kUMJNJCFWwGfefuxy+vAi6+qarPkJdtIgxXn4deNKMu7OtqkMfMxfnBvub5cldOdR6zIoJwUqVnawVdba8h41fp8oFJriNgrp3Sz5HkOj70Y6YuNjElXxAJXngvTmF/HtWLOghHYXSmuAVnXsMU4Psxw+py+Tepxac=
+  - secure: MCzGQaektsfOHwPtzPsc1/Ae0YJ1XJEBAiW0yZm7BObd232/hxxGakqjUnHEBlPpPAS0C7j9KY4oIZUhHuKpsKlEBeS9tD5A0uiqrY5WbAKoHb8I4ofuhB3+BlwCotfrsw/epJEHS2VrAYjCQnzRNW8dSoW0C+qx9btzsOu1HqY=
+  - secure: fcakPEzEIJLVbyiiwxll3mYIpUzzTsFFAZh5sCosgYbMp/Cg9jgJjYeaHe2heD1Oeiupr1B51TW/uGW94cMKWbFdEK1wHFMZ/RCqmkZE276bakoybql4KxlFkKN6AGFXl1y7xtQBxcsIt97iNj5FhcVdp6M9AtNMa5ckZ/59/Dg=
+  - secure: YjJ3rw99Obd0fjsONzlWUA7KEZg+Tn7sMxEy2YtVfDdJ6H5wsiJkTSFpspeNHjSwX9pd+9fcKwkozEMcnfJpVTtjfDGShoJhymP9aYNVc4NKYSjXZFsaeYl7Dm6V8WdZvqjwelUFBt0yCeE3eISclkJoHDQrvXTXILTM+4Ha4WQ=
+  - secure: QUrYWwwS45uzOJC8rZ9IMyj+LvLkxfa697skQYUu0ayHCi+SJ2zaXV0obLTNGZS1VfZVfQkc2NwAwJSknWnMKrcBNfpd1AAUNiwCp7+CPvHr0cyp7/0qrrGCzOOXqzz+7gtGygCvlNJLLN6CDexu+FgqYShjKioI5QM1et5UsJg=
+  - secure: aLh3LoQ0ODpyGpg9IBO43qWe7iGmFqVwVoi1Nwxsb1h5oG6I9J9EP9C+2iY9Fy/UMl9o9hMO79hlxM/uXrvTTCAo6REczbhLhCkYWCaTMl62utgXn40qiQMWQ6/QYcUEKMOK0ldEBAISF/sS0JPk7ciM5OPELqhSQ2w6YFmGel8=
+  - secure: HIsqCu1uYSGqyqGTBriwZ8RQRTGi6C9zB2PX2fGmkYAq/LdX8MRBeLN/q+iSkfH3pq0rxsRmIOmNrmT1+IWTLaxZ5IdOrDhXVMVnqP+6SPiPIzbA8EYKg+c6PrUulapmzUW/Dz8CtvdzZcvsYjeU9KAsyKou/Ftc55xJj6/V6Jk=
+  - secure: NCoExumMuwBoWiLYbAx4gt9K7yMilfBPmQbpKMSid2r3K4KBXc0egTQwVHImLpNQk94ftPpFh4xEtZ1EHaE00Dm5LCWOsdbiK9e1PAX5HJ+sgDlj5inpYGDMdYUVhGxWKig5reMLYmmIFCfD6NYHeg89bij78yYJawYID/mtFWo=
+  - secure: hMNv+ty5SWxbD+mQtkIuPSgetnI6nEJbts+Jth+vCFrx4k8TDGTJx6rVxfu8V1eTL+lF8Ryf7OokHcfyThMK8O6T2WJjLejZq99NdkIDhFHXCSWquaXW7cd9SfEoXheyhV3tqPAbtwdepoajN1vEM9GkpXejQNDZIZzWj1RV6zE=
