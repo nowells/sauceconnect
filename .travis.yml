@@ -17,6 +17,7 @@ notifications:
 env:
   global:
   - KITCHEN_YAML=.kitchen.cloud.yml
+  - DIGITAL_OCEAN_SSH_KEY_PATH=~/.ssh/id_do.pem
   - secure: VDanWUqwWpCjYDfE6RUxZLuTQFaJ4wLopcq0p5oDrxQ3ACGnhsMPV2ijGujxmkZSa5/pWul+m8KKZARwVBktUp6CqnzTw683WBwn5+XKTo/ksuK0kYUwWKfPNuAHglvYjrs0trdHXwzaxBtLAhp1105h2PajAe/QRjQwWDDAOD8=
   - secure: DfNrqj4SNqJCk6uO7Z7i0GSlxLNdy5nKYU8T8l7Qj703jvRbk8/HalSeGLRPhg8WAUBwjcRJtjfCVE0TBlhcqKTXtQ2OGjJTRN8lqY2deM8P5/2qsbDN+ZFQLxydQ2ZzpB032r9nF4A//s2mIgGlpVUq8uYa1y4ztGzQCnju/7A=
   - secure: ZyM8bk+XFGSX+UZXSoLHVMuPvkC8nB6ne28lY2pK+VUZJz3GRUgBF9SwU5sphaSYyOFTFYDMO4wdWP6mOSexaIMSxs9VQD2SVAJPicKHvyj2gg2ACg27ovFLmIrnnh45TRm4klRNfYJTcLu+gnJZCn+xbOinQLkNKfsyCzyo9AM=
@@ -44,6 +45,7 @@ env:
   - secure: hMNv+ty5SWxbD+mQtkIuPSgetnI6nEJbts+Jth+vCFrx4k8TDGTJx6rVxfu8V1eTL+lF8Ryf7OokHcfyThMK8O6T2WJjLejZq99NdkIDhFHXCSWquaXW7cd9SfEoXheyhV3tqPAbtwdepoajN1vEM9GkpXejQNDZIZzWj1RV6zE=
   - secure: CfHE1qF7DEz6CCa1yY7jCmyIhMRMmxJFlzQWgCTE9RNOYsGM9lhsazxTEKXRdlu3XG1f4CNMNepSisz+zKSulZ0Cjktbd/EG7plU2Mym+8MrXQsWV9HTKTODJLwDKYqx2EC5bX6zx8e0iiXM2aB7ugBYh+jypFfg9jUqy/eDfRE=
   - secure: Yqn6pPbKC066E/OUF0Ow/qktFzkPDv45+Zi3MRvEv7YMWb9U7XK9qt9EGKtl220AFKXGNlvPIMGspJvPVZyIkVtgViH9TWguy1O4ktz89kKzNoRYkqIP7BJbUPtzPPg2ngGztLp/VlMqjxvg6mPuK5+RYU/Y5OEmpl3SmuJWnu8=
+  - secure: frohh6KGMLPxl46W2B8IXPJhTrAGMl41dwit3/s3aSbWTyZnvUxgzh4jNV+A0KiyTFpWGvkFfJK+Qa5+ME+6YrQT7rGYLlg/w/Ra7OJKAMiVE8usoiSo5MkPTVVBiL+ZWQBzhzcFtnRsiBLXrEIZreC7Nlj+aFSGJeWQerZJaMk=
   matrix:
   - KITCHEN_INSTANCE='server-centos-58'
   - KITCHEN_INSTANCE='server-centos-64'
