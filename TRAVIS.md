@@ -6,9 +6,17 @@ These notes were cribbed from the work that Sean O'Meara did for the Yum cookboo
 # Ensure Travis integration is on in GitHub.
 # Set up Gemfile, Rakefile like the ones here
 # Set up .kitchen.cloud.yml
-# Set up a .travis.yml without all the encrypted secrets but with the tasks, matrix, etc.
+# Set up a .travis.yml without all the encrypted secrets but with the tasks, matrix, etc. This .travis.yml needs to have env vars like DIGITAL_OCEAN_SSH_KEY_PATH set up unencrypted in the env->global section.
 # Install the Travis gem. Encrypt the secrets you will use. This is the trickiest part:
-## Environment variables shorter than 90 characters are easy; just do ```travis encrypt FOO=bar --add```
+## Environment variables shorter than 90 characters are easy; just do ```travis encrypt FOO=bar --add```. For
+DigitalOcean you need at least:
+
+```
+travis encrypt DIGITAL_OCEAN_CLIENT_ID=whatevs
+travis encrypt DIGITAL_OCEAN_API_KEY=whatevs
+travis encrypt DIGITAL_OCEAN_SSH_KEY_IDS=123456  # read kitchen-digitalocean's README to find out how to get this
+```
+
 ## Environment variables longer than 90 characters require some incantation, e.g. for your SSH private key, do
 something like:
 
