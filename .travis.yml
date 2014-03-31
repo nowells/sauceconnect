@@ -16,6 +16,7 @@ notifications:
   - jdunn@aquezada.com
 env:
   global:
+  - KITCHEN_YAML=.kitchen.cloud.yml
   - secure: VDanWUqwWpCjYDfE6RUxZLuTQFaJ4wLopcq0p5oDrxQ3ACGnhsMPV2ijGujxmkZSa5/pWul+m8KKZARwVBktUp6CqnzTw683WBwn5+XKTo/ksuK0kYUwWKfPNuAHglvYjrs0trdHXwzaxBtLAhp1105h2PajAe/QRjQwWDDAOD8=
   - secure: DfNrqj4SNqJCk6uO7Z7i0GSlxLNdy5nKYU8T8l7Qj703jvRbk8/HalSeGLRPhg8WAUBwjcRJtjfCVE0TBlhcqKTXtQ2OGjJTRN8lqY2deM8P5/2qsbDN+ZFQLxydQ2ZzpB032r9nF4A//s2mIgGlpVUq8uYa1y4ztGzQCnju/7A=
   - secure: ZyM8bk+XFGSX+UZXSoLHVMuPvkC8nB6ne28lY2pK+VUZJz3GRUgBF9SwU5sphaSYyOFTFYDMO4wdWP6mOSexaIMSxs9VQD2SVAJPicKHvyj2gg2ACg27ovFLmIrnnh45TRm4klRNfYJTcLu+gnJZCn+xbOinQLkNKfsyCzyo9AM=
