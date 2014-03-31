@@ -19,13 +19,13 @@
 #
 
 # You can choose 'latest' as version, but keep in mind that whenever Saucelabs does a new release, your proxy will restart!
-default['sauceconnect']['server']['version']='3.0-r28'
-default['sauceconnect']['server']['download_url']='http://saucelabs.com/downloads'
-default['sauceconnect']['server']['zipfile']="Sauce-Connect-#{node['sauceconnect']['server']['version']}.zip"
-default['sauceconnect']['server']['install_dir']='/opt/sauceconnect'
-default['sauceconnect']['server']['user']='sauceprx'
-default['sauceconnect']['server']['log_file']="#{node['sauceconnect']['server']['install_dir']}/sauce_connect.log"
+default['sauceconnect']['server']['version'] = '3.0-r28'
+default['sauceconnect']['server']['download_url'] = 'http://saucelabs.com/downloads'
+default['sauceconnect']['server']['zipfile'] = "Sauce-Connect-#{node['sauceconnect']['server']['version']}.zip"
+default['sauceconnect']['server']['install_dir'] = '/opt/sauceconnect'
+default['sauceconnect']['server']['user'] = 'sauceprx'
+default['sauceconnect']['server']['log_file'] = "#{node['sauceconnect']['server']['install_dir']}/sauce_connect.log"
 
 # Typically overridden in the role
-default['sauceconnect']['server']['api_user']=''
-default['sauceconnect']['server']['api_key']=''
+default['sauceconnect']['server']['api_user'] = ''
+default['sauceconnect']['server']['api_key'] = ''

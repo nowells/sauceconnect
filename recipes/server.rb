@@ -17,10 +17,10 @@
 # limitations under the License.
 #
 
-include_recipe "java"
+include_recipe 'java'
 
 user node['sauceconnect']['server']['user'] do
-  comment "SauceLabs Proxy User"
+  comment 'SauceLabs Proxy User'
   system true
   action :create
 end
@@ -32,40 +32,40 @@ directory node['sauceconnect']['server']['install_dir'] do
 end
 
 # Can't assume we have unzip
-package "unzip" do
+package 'unzip' do
   action :install
 end
 
-execute "unzip-saucelabs-proxy" do
+execute 'unzip-saucelabs-proxy' do
   cwd node['sauceconnect']['server']['install_dir']
   command "unzip -o #{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['zipfile']}"
   action :nothing
-  notifies :restart, "service[sauceconnect]"
+  notifies :restart, 'service[sauceconnect]'
 end
 
 remote_file "#{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['zipfile']}" do
   source "#{node['sauceconnect']['server']['download_url']}/#{node['sauceconnect']['server']['zipfile']}"
   action :create
-  notifies :run, "execute[unzip-saucelabs-proxy]", :immediately
+  notifies :run, 'execute[unzip-saucelabs-proxy]', :immediately
 end
 
-template "/etc/init.d/sauceconnect" do
-  source "sauceconnect.init.erb"
+template '/etc/init.d/sauceconnect' do
+  source 'sauceconnect.init.erb'
   mode 00755
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
   action :create
 end
 
-template "/etc/sysconfig/sauceconnect" do
-  source "sauceconnect.sysconfig.erb"
+template '/etc/sysconfig/sauceconnect' do
+  source 'sauceconnect.sysconfig.erb'
   mode 00644
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
   action :create
 end
 
-service "sauceconnect" do
+service 'sauceconnect' do
   supports :restart => true
   action [:enable, :start]
 end

@@ -3,10 +3,10 @@ require 'spec_helper'
 
 describe 'sauceconnect::server' do
 
-  let (:chef_run) do
+  let :chef_run do
     runner = ChefSpec::Runner.new(
-      platform: 'centos',
-      version: '6.3'
+      :platform => 'centos',
+      :version => '6.3'
     )
     runner.node.set['sauceconnect']['server']['user'] = 'fake'
     runner.node.set['sauceconnect']['server']['install_dir'] = '/tmp/fake'
