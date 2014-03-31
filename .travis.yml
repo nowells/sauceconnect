@@ -10,7 +10,7 @@ script:
 - bundle exec rake spec
 - bundle exec kitchen test $KITCHEN_INSTANCE
 after_script:
-- bundle exec kitchen test $KITCHEN_INSTANCE
+- bundle exec kitchen destroy $KITCHEN_INSTANCE
 notifications:
   email:
   - jdunn@aquezada.com
