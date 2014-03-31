@@ -6,7 +6,7 @@ description      'Installs/Configures SauceLabs Connect Proxy'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.10'
 
-%w{fedora redhat centos oracle amazon scientific}.each do |p|
+%w(fedora redhat centos oracle amazon scientific).each do |p|
   supports p
 end
 
