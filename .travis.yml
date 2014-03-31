@@ -48,5 +48,5 @@ env:
   - secure: frohh6KGMLPxl46W2B8IXPJhTrAGMl41dwit3/s3aSbWTyZnvUxgzh4jNV+A0KiyTFpWGvkFfJK+Qa5+ME+6YrQT7rGYLlg/w/Ra7OJKAMiVE8usoiSo5MkPTVVBiL+ZWQBzhzcFtnRsiBLXrEIZreC7Nlj+aFSGJeWQerZJaMk=
   matrix:
   - KITCHEN_INSTANCE='server-centos-58'
-  - KITCHEN_INSTANCE='server-centos-64'
+  - KITCHEN_INSTANCE='server-centos-65'
   - KITCHEN_INSTANCE='server-fedora-19'
