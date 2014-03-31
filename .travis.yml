@@ -41,3 +41,7 @@ env:
   - secure: HIsqCu1uYSGqyqGTBriwZ8RQRTGi6C9zB2PX2fGmkYAq/LdX8MRBeLN/q+iSkfH3pq0rxsRmIOmNrmT1+IWTLaxZ5IdOrDhXVMVnqP+6SPiPIzbA8EYKg+c6PrUulapmzUW/Dz8CtvdzZcvsYjeU9KAsyKou/Ftc55xJj6/V6Jk=
   - secure: NCoExumMuwBoWiLYbAx4gt9K7yMilfBPmQbpKMSid2r3K4KBXc0egTQwVHImLpNQk94ftPpFh4xEtZ1EHaE00Dm5LCWOsdbiK9e1PAX5HJ+sgDlj5inpYGDMdYUVhGxWKig5reMLYmmIFCfD6NYHeg89bij78yYJawYID/mtFWo=
   - secure: hMNv+ty5SWxbD+mQtkIuPSgetnI6nEJbts+Jth+vCFrx4k8TDGTJx6rVxfu8V1eTL+lF8Ryf7OokHcfyThMK8O6T2WJjLejZq99NdkIDhFHXCSWquaXW7cd9SfEoXheyhV3tqPAbtwdepoajN1vEM9GkpXejQNDZIZzWj1RV6zE=
+  matrix:
+  - KITCHEN_INSTANCE='server-centos-58'
+  - KITCHEN_INSTANCE='server-centos-64'
+  - KITCHEN_INSTANCE='server-fedora-19'
