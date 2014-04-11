@@ -19,7 +19,7 @@
 #
 
 # You can choose 'latest' as version, but keep in mind that whenever Saucelabs does a new release, your proxy will restart!
-default['sauceconnect']['server']['version'] = '3.0-r28'
+default['sauceconnect']['server']['version'] = '3.1-r32'
 default['sauceconnect']['server']['download_url'] = 'http://saucelabs.com/downloads'
 default['sauceconnect']['server']['zipfile'] = "Sauce-Connect-#{node['sauceconnect']['server']['version']}.zip"
 default['sauceconnect']['server']['install_dir'] = '/opt/sauceconnect'
