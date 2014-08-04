@@ -18,6 +18,7 @@
 #
 
 include_recipe 'java'
+include_recipe 'runit'
 
 user node['sauceconnect']['server']['user'] do
   comment 'SauceLabs Proxy User'
@@ -31,22 +32,18 @@ directory node['sauceconnect']['server']['install_dir'] do
   action :create
 end
 
-# Can't assume we have unzip
-package 'unzip' do
-  action :install
-end
-
-execute 'unzip-saucelabs-proxy' do
+execute 'untar-saucelabs-proxy' do
   cwd node['sauceconnect']['server']['install_dir']
-  command "unzip -o #{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['zipfile']}"
+  command "tar xfz #{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['tarball']} --strip-components=1"
+  user node['sauceconnect']['server']['user']
   action :nothing
   notifies :restart, 'service[sauceconnect]'
 end
 
-remote_file "#{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['zipfile']}" do
-  source "#{node['sauceconnect']['server']['download_url']}/#{node['sauceconnect']['server']['zipfile']}"
+remote_file "#{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server']['tarball']}" do
+  source "#{node['sauceconnect']['server']['download_url']}/#{node['sauceconnect']['server']['tarball']}"
   action :create
-  notifies :run, 'execute[unzip-saucelabs-proxy]', :immediately
+  notifies :run, 'execute[untar-saucelabs-proxy]', :immediately
 end
 
 runit_service 'sauceconnect' do
@@ -58,9 +55,4 @@ runit_service 'sauceconnect' do
     :install_dir => node['sauceconnect']['server']['install_dir'],
     :tunnel_domains => node['sauceconnect']['server']['tunnel_domains'].join(',')
     })
-end
-
-service 'sauceconnect' do
-  supports :restart => true
-  action [:enable, :start]
 end
