@@ -18,13 +18,6 @@
 # limitations under the License.
 #
 
-case node['platform_family']
-when 'ubuntu', 'debian'
-  default['sauceconnect']['server']['init_functions'] = '/lib/lsb/init-functions'
-else
-  default['sauceconnect']['server']['init_functions'] = '/etc/rc.d/init.d/functions'
-end
-
 # You can choose 'latest' as version, but keep in mind that whenever Saucelabs does a new release, your proxy will restart!
 default['sauceconnect']['server']['version'] = '4.3'
 default['sauceconnect']['server']['download_url'] = 'http://saucelabs.com/downloads'
