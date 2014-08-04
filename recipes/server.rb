@@ -49,20 +49,15 @@ remote_file "#{Chef::Config[:file_cache_path]}/#{node['sauceconnect']['server'][
   notifies :run, 'execute[unzip-saucelabs-proxy]', :immediately
 end
 
-template '/etc/init.d/sauceconnect' do
-  source 'sauceconnect.init.erb'
-  mode 00755
-  owner 'root'
-  group 'root'
-  action :create
-end
-
-template '/etc/sysconfig/sauceconnect' do
-  source 'sauceconnect.sysconfig.erb'
-  mode 00644
-  owner 'root'
-  group 'root'
-  action :create
+runit_service 'sauceconnect' do
+  options({
+    :user => node['sauceconnect']['server']['user'],
+    :api_user => node['sauceconnect']['server']['api_user'],
+    :api_key => node['sauceconnect']['server']['api_key'],
+    :log_file => node['sauceconnect']['server']['log_file'],
+    :install_dir => node['sauceconnect']['server']['install_dir'],
+    :tunnel_domains => node['sauceconnect']['server']['tunnel_domains'].join(',')
+    })
 end
 
 service 'sauceconnect' do

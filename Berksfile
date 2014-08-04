@@ -5,3 +5,4 @@ group :integration do
   cookbook "minitest-handler"
 end
 
+cookbook 'runit', '= 1.5.10'

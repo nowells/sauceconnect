@@ -11,3 +11,4 @@ version          '0.1.10'
 end
 
 depends 'java'
+depends 'runit'

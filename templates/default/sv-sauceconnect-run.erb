@@ -1,0 +1,3 @@
+#!/bin/sh
+exec 2>&1
+exec java -jar <%= @options['install_dir'] %>/Sauce-Connect.jar -l <%= @options['log_file'] %> -u <%= @options['api_user'] %> -k <%= @options['api_key'] %> -t <%= @options['tunnel_domains'] %> 

@@ -36,3 +36,4 @@ default['sauceconnect']['server']['log_file'] = "#{node['sauceconnect']['server'
 # Typically overridden in the role
 default['sauceconnect']['server']['api_user'] = ''
 default['sauceconnect']['server']['api_key'] = ''
+default['sauceconnect']['server']['tunnel_domains'] = ['localhost']
