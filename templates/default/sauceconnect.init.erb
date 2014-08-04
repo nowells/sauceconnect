@@ -20,16 +20,7 @@
 ### END INIT INFO
 
 # Source function library.
-. /etc/rc.d/init.d/functions
-
-# Source networking configuration.
-. /etc/sysconfig/network
-
-# Check that networking is up.
-[ ${NETWORKING} = "no" ] && exit 0
-
-# Source config file if it exists
-[ -r /etc/sysconfig/sauceconnect ] && . /etc/sysconfig/sauceconnect
+. <%= node['sauceconnect']['server']['init_functions'] %>
 
 jarfile=${JARFILE-<%= node['sauceconnect']['server']['install_dir'] %>/Sauce-Connect.jar}
 logfile=${LOGFILE-<%= node['sauceconnect']['server']['install_dir'] %>/sauce_connect.log}
