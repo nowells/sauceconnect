@@ -26,14 +26,14 @@ else
 end
 
 # You can choose 'latest' as version, but keep in mind that whenever Saucelabs does a new release, your proxy will restart!
-default['sauceconnect']['server']['version'] = '3.1-r32'
+default['sauceconnect']['server']['version'] = '4.3'
 default['sauceconnect']['server']['download_url'] = 'http://saucelabs.com/downloads'
-default['sauceconnect']['server']['zipfile'] = "Sauce-Connect-#{node['sauceconnect']['server']['version']}.zip"
+default['sauceconnect']['server']['tarball'] = "sc-#{node['sauceconnect']['server']['version']}-linux.tar.gz"
 default['sauceconnect']['server']['install_dir'] = '/opt/sauceconnect'
-default['sauceconnect']['server']['user'] = 'sauceprx'
+default['sauceconnect']['server']['user'] = 'sc'
 default['sauceconnect']['server']['log_file'] = "#{node['sauceconnect']['server']['install_dir']}/sauce_connect.log"
 
-# Typically overridden in the role
+# Typically overridden in a wrapper cookbook
 default['sauceconnect']['server']['api_user'] = ''
 default['sauceconnect']['server']['api_key'] = ''
 default['sauceconnect']['server']['tunnel_domains'] = ['localhost']
