@@ -30,3 +30,4 @@ default['sauceconnect']['server']['log_file'] = "#{node['sauceconnect']['server'
 default['sauceconnect']['server']['api_user'] = ''
 default['sauceconnect']['server']['api_key'] = ''
 default['sauceconnect']['server']['tunnel_domains'] = ['localhost']
+default['sauceconnect']['server']['tunnel_id'] = node.chef_environment
