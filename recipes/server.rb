@@ -52,7 +52,6 @@ runit_service 'sauceconnect' do
     :api_key => node['sauceconnect']['server']['api_key'],
     :log_file => node['sauceconnect']['server']['log_file'],
     :install_dir => node['sauceconnect']['server']['install_dir'],
-    :tunnel_domains => node['sauceconnect']['server']['tunnel_domains'].join(','),
     :tunnel_id => node['sauceconnect']['server']['tunnel_id']
     })
 end

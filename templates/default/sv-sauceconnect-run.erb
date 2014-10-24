@@ -1,4 +1,4 @@
 #!/bin/sh
 exec 2>&1
 ulimit -n 10240
-exec chpst -u <%= @options[:user] %> <%= @options[:install_dir] %>/bin/sc -l <%= @options[:log_file] %> -u <%= @options[:api_user] %> -k '<%= @options[:api_key] %>' -t <%= @options[:tunnel_domains] %> -i <%= @options[:tunnel_id] %> 
+exec chpst -u <%= @options[:user] %> <%= @options[:install_dir] %>/bin/sc -l <%= @options[:log_file] %> -u <%= @options[:api_user] %> -k '<%= @options[:api_key] %>' --tunnel-identifier <%= @options[:tunnel_id] %>

@@ -29,5 +29,4 @@ default['sauceconnect']['server']['log_file'] = "#{node['sauceconnect']['server'
 # Typically overridden in a wrapper cookbook
 default['sauceconnect']['server']['api_user'] = ''
 default['sauceconnect']['server']['api_key'] = ''
-default['sauceconnect']['server']['tunnel_domains'] = ['localhost']
 default['sauceconnect']['server']['tunnel_id'] = node.chef_environment
