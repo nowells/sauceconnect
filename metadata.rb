@@ -10,5 +10,4 @@ version          '0.1.10'
   supports p
 end
 
-depends 'java'
 depends 'runit'

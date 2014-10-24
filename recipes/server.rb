@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe 'java'
 include_recipe 'runit'
 
 user node['sauceconnect']['server']['user'] do
